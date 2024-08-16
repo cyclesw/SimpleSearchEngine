@@ -1,4 +1,4 @@
-from dataclasses import dataclass
+from dataclasses import dataclass, field
 from typing import List
 
 
@@ -18,5 +18,11 @@ class InvertedElem:
 class InvertedElemPrint:
     id: int = 0
     weight: int = 0
-    words: List[str] = None
+    words: List[str] = field(default_factory=list)
+
+# only use for index
+@dataclass
+class word_cnt:
+    title_cnt: int = 0
+    content_cnt: int = 0
 

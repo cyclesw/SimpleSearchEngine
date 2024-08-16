@@ -1,4 +1,3 @@
-import searcher
 from scripts.searcher import Searcher
 
 msg = '../data/output/raw.txt'

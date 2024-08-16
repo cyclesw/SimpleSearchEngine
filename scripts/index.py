@@ -1,4 +1,5 @@
 # coding: utf-8
+
 import os
 import jieba
 from threading import Lock
@@ -6,7 +7,8 @@ from typing import List
 from dataclasses import dataclass
 from loguru import logger
 from collections import defaultdict
-from types import InvertedElem
+from scripts.types import word_cnt
+from scripts.types import InvertedElem
 
 
 @dataclass
@@ -15,12 +17,6 @@ class DocInfo:
     content: str = ''
     url: str = ''
     id: int = 0
-
-@dataclass
-class word_cnt:
-    title_cnt: int = 0
-    content_cnt: int = 0
-
 
 class Index:
     instance = None
@@ -35,23 +31,23 @@ class Index:
             with cls.lock:
                 if cls.instance is None:
                     cls.instance = super().__new__(cls)
-        else:
-            return cls.instance
+        return cls.instance
 
     def __init__(self):
         self.__forward_index: List[DocInfo] = []
         self.__inverted_index: defaultdict[str, List[InvertedElem]] = defaultdict(list)
 
-    def get_forward_index(self, doc_id: int):
-        if doc_id > len(self.__forward_index):
+    def get_forward_index(self, doc_id: int) -> DocInfo | None:
+        if doc_id >= len(self.__forward_index):
             logger.error('doc_id is out of range')
             return None
+
         return self.__forward_index[doc_id]
 
-    def get_inverted_index(self, word: str):
+    def get_inverted_index(self, word: str) -> List[InvertedElem]:
         if word not in self.__inverted_index:
             logger.error('word not in inverted_index')
-            return None
+            return []
 
         return self.__inverted_index[word]
 
@@ -62,6 +58,7 @@ class Index:
         with open(string, mode='b+r') as f:
             while f.tell() != os.fstat(f.fileno()).st_size:
                 line = f.readline()
+                print(line)
                 doc = self.__build_forward_index(line.decode('utf-8'))
                 if doc is None:
                     logger.error(f'build {line} error')

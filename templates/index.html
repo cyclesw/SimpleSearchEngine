@@ -1,21 +1,55 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Simple Search Page</title>
+    <title>简单搜索页面</title>
     <style>
         body {
             font-family: Arial, sans-serif;
             display: flex;
-            justify-content: center;
+            flex-direction: column;
             align-items: center;
-            height: 100vh;
+            min-height: 100vh;
             margin: 0;
             background-color: #f4f4f4;
         }
         .search-container {
             text-align: center;
+            margin-top: 20px;
+            margin-bottom: 20px;
+            width: 100%;
+        }
+        .result {
+            width: 100%;
+            max-width: 800px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .result .item {
+            width: 50%;
+            margin-bottom: 20px;
+            text-align: left;
+        }
+        .result .item a {
+            display: block;
+            text-decoration: none;
+            font-size: 20px;
+            color: #4e6ef2;
+        }
+        .result .item a:hover {
+            text-decoration: underline;
+        }
+        .result .item p {
+            margin-top: 5px;
+            font-size: 16px;
+            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+        }
+        .result .item i {
+            display: block;
+            font-style: normal;
+            color: green;
         }
         input[type="text"] {
             width: 300px;
@@ -41,11 +75,21 @@
 </head>
 <body>
     <div class="search-container">
-        <h1>Search</h1>
         <form action="/search" method="get">
-            <input type="text" name="query" placeholder="Search...">
-            <input type="submit" value="Search">
+            <label>
+                <input type="text" name="query" placeholder="搜索...">
+            </label>
+            <input type="submit" value="搜索">
         </form>
+    </div>
+    <div class="result">
+        {% for elem in results %}
+        <div class="item">
+            <a href="{{elem['url']}}">{{elem['title']}}</a>
+            <p>{{ elem['desc'] }}</p>
+            <i>{{ elem['url'] }}</i>
+        </div>
+        {% endfor %}
     </div>
 </body>
 </html>

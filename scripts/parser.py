@@ -1,15 +1,18 @@
 from bs4 import BeautifulSoup
 from loguru import logger
 from typing import List
-from types import DocInfo
+from scripts.types import DocInfo
 import os
 
 
 class UrlParser:
+    """
+        用于解析html文件，并将格式化后的文档写入raw.txt文件
+    """
     SRC_PATH = 'data/input'
     OUTPUT = 'data/output/raw.txt'
-    URL_HEAD = 'https://www.boost.org/doc/libs/1_85_0/doc/html'
-    SEP = '\3'
+    URL_HEAD = 'https://www.boost.org/doc/libs/1_85_0/doc/html/'
+    SEP = '\3'  # 切割的标志符
 
     def __init__(self):
         self.files_list: List[str] = []
@@ -45,7 +48,7 @@ class UrlParser:
                     doc.title = soup.title.string
 
                 for string in soup.stripped_strings:
-                    doc.content += string + ' '
+                    doc.content += string.replace('\n', '')
 
                 doc.url = self.URL_HEAD + file[len(self.SRC_PATH) + 1:]
                 self.items.append(doc)
@@ -56,17 +59,9 @@ class UrlParser:
                 out = f'{item.title}{self.SEP}{item.content}{self.SEP}{item.url}\n'
                 f.write(out.encode('utf-8'))
 
-
     def __files_debug(self):
         for file in self.files_list:
             print(file)
 
-# def init():
-#     logger.add('logs/debug.log', level='DEBUG',
-#                   rotation='10 MB', compression='tar',
-#                   filter=lambda record: record['level'].name == 'DEBUG',
-#                   encoding='utf-8')
-#
-#     logger.add('logs/parser.log', level='INFO',
-#                     rotation='10 MB', compression='tar',
-#                     encoding='utf-8')
+if __name__ == '__main__':
+    UrlParser().start()
