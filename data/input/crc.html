@@ -1,0 +1,106 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Chapter 10. Boost.CRC 1.5 - master</title>
+<link rel="stylesheet" href="../../doc/src/boostbook.css" type="text/css">
+<meta name="generator" content="DocBook XSL Stylesheets V1.79.1">
+<link rel="home" href="index.html" title="The Boost C++ Libraries BoostBook Documentation Subset">
+<link rel="up" href="libraries.html" title="Part I. The Boost C++ Libraries (BoostBook Subset)">
+<link rel="prev" href="conversion/history.html" title="History">
+<link rel="next" href="crc/introduction.html" title="Introduction">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="icon" href="/favicon.ico" type="image/ico"/><link rel="stylesheet" type="text/css" href="/style-v2/section-basic.css"/></head>
+<body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF">  <div id="boost-common-heading-doc">
+    <div class="heading-inner">
+  <div class="heading-placard"></div>
+
+  <h1 class="heading-title">
+  <a href="/">
+  <img src="/gfx/space.png" alt= "Boost C++ Libraries" class="heading-logo" />
+  <span class="heading-boost">Boost</span>
+  <span class="heading-cpplibraries">C++ Libraries</span>
+  </a></h1>
+
+  <p class="heading-quote">
+  <q>...one of the most highly
+  regarded and expertly designed C++ library projects in the
+  world.</q> <span class="heading-attribution">&mdash; <a href=
+  "https://herbsutter.com" class="external">Herb Sutter</a> and <a href=
+  "http://en.wikipedia.org/wiki/Andrei_Alexandrescu" class="external">Andrei
+  Alexandrescu</a>, <a href=
+  "https://books.google.com/books/about/C++_Coding_Standards.html?id=mmjVIC6WolgC" class="external">C++
+  Coding Standards</a></span></p>
+  <div class="heading-search">
+    <button
+      id="gecko-search-button"
+      data-current-boost-version="1.86.0"
+      data-theme-mode="light"
+      data-font-family="sans-serif"
+    >
+      <svg viewBox="0 0 24 24">
+        <path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"></path>
+      </svg>Search...
+    </button>
+  </div>
+</div>
+<script defer="defer" src="/common/boost-gecko/main.d32fa2d9.js"></script>
+
+  </div>
+
+  <div id="boost-common-heading-doc-spacer"></div>
+<div class="boost-common-header-notice"><span class="boost-common-header-inner">This is the documentation for a snapshot of the master branch, built from commit <a href='https://github.com/boostorg/boost/commit/f400245a6b907e503289281f62ca8176081b8c15'>f400245a6b</a>.</span></div>
+<div class="spirit-nav">
+<a accesskey="p" href="conversion/history.html"><img src="../../doc/src/images/prev.png" alt="Prev"></a><a accesskey="u" href="libraries.html"><img src="../../doc/src/images/up.png" alt="Up"></a><a accesskey="h" href="index.html"><img src="../../doc/src/images/home.png" alt="Home"></a><a accesskey="n" href="crc/introduction.html"><img src="../../doc/src/images/next.png" alt="Next"></a>
+</div>
+<div class="chapter">
+<div class="titlepage"><div>
+<div><h2 class="title">
+<a name="crc"></a>Chapter 10. Boost.CRC 1.5</h2></div>
+<div><div class="author"><h3 class="author">
+<span class="firstname">Daryle</span> <span class="surname">Walker</span>
+</h3></div></div>
+<div><p class="copyright">Copyright © 2001, 2003, 2012 Daryle Walker</p></div>
+<div><div class="legalnotice">
+<a name="crc.legal"></a><p>
+        Distributed under the Boost Software License, Version 1.0. (See the accompanying
+        file LICENSE_1_0.txt or a copy at <a href="/LICENSE_1_0.txt" target="_top">http://www.boost.org/LICENSE_1_0.txt</a>)
+      </p>
+</div></div>
+</div></div>
+<div class="toc">
+<p><b>Table of Contents</b></p>
+<dl class="toc">
+<dt><span class="section"><a href="crc.html#crc.motivation">What is Boost.CRC?</a></span></dt>
+<dt><span class="section"><a href="crc/introduction.html">Introduction</a></span></dt>
+<dd><dl><dt><span class="section"><a href="crc/introduction.html#crc.introduction.intro_crcs">CRCs</a></span></dt></dl></dd>
+<dt><span class="section"><a href="crc/crc_basic.html">Theoretical CRC Computer</a></span></dt>
+<dt><span class="section"><a href="crc/crc_optimal.html">Optimized CRC Computer</a></span></dt>
+<dt><span class="section"><a href="crc/crc_function.html">CRC Function</a></span></dt>
+<dt><span class="section"><a href="crc/acrc_function.html">Augmented-CRC Function</a></span></dt>
+<dt><span class="section"><a href="crc/crc_samples.html">Pre-Defined CRC Samples</a></span></dt>
+<dt><span class="section"><a href="crc/end.html">End Matter</a></span></dt>
+<dt><span class="section"><a href="crc/reference.html">Reference</a></span></dt>
+<dd><dl><dt><span class="section"><a href="crc/reference.html#doxygen.crc_8hpp">Header &lt;boost/crc.hpp&gt;</a></span></dt></dl></dd>
+</dl>
+</div>
+<div class="section">
+<div class="titlepage"><div><div><h2 class="title" style="clear: both">
+<a name="crc.motivation"></a><a class="link" href="crc.html#crc.motivation" title="What is Boost.CRC?">What is Boost.CRC?</a>
+</h2></div></div></div>
+<p>
+      CRCs (cyclic redundancy codes) is one common technique to confirming data integrity
+      after transmission. The <span class="bold"><strong>Boost.CRC</strong></span> library
+      provides access to two styles of CRC computation, one as a function template,
+      the other as a function template and two computation object class templates,
+      where the two class templates differ in speed.
+    </p>
+</div>
+</div>
+<div class="copyright-footer"></div>
+<hr>
+<div class="spirit-nav">
+<a accesskey="p" href="conversion/history.html"><img src="../../doc/src/images/prev.png" alt="Prev"></a><a accesskey="u" href="libraries.html"><img src="../../doc/src/images/up.png" alt="Up"></a><a accesskey="h" href="index.html"><img src="../../doc/src/images/home.png" alt="Home"></a><a accesskey="n" href="crc/introduction.html"><img src="../../doc/src/images/next.png" alt="Next"></a>
+</div>
+</body>
+</html>
